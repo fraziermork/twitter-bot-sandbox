@@ -5,4 +5,4 @@ const botConfig = {
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 };
 
-export default botConfig;
+module.exports = botConfig;

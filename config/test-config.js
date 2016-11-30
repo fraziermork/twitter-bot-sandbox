@@ -5,4 +5,4 @@ const testConfig = {
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET_TEST,
 };
 
-export default testConfig;
+module.exports = testConfig;
