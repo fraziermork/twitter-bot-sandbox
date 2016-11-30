@@ -1,0 +1,85 @@
+{
+  "rules": {
+    "no-console": 0,
+    "no-trailing-spaces": 0,
+    "import/no-extraneous-dependencies": [
+      2, 
+      {
+        "devDependencies": [
+          "**/*.test.js"
+        ]
+      }
+    ],
+    "space-before-function-paren": [
+      2, 
+      {
+        "anonymous": "never", 
+        "named": "always"
+      }
+    ],
+    "no-unused-vars": [
+      2, 
+      {
+        "vars": "all", 
+        "args": "none"
+      }
+    ],
+    "indent": [
+      2,
+      2
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2, 
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ], 
+    "comma-dangle": [
+      1, 
+      "always-multiline"
+    ], 
+    "key-spacing": [
+      2, 
+      {
+        "singleLine": {
+          "beforeColon": false, 
+          "afterColon": true, 
+          "mode": "strict"
+        }, 
+        "multiLine": {
+          "beforeColon": false, 
+          "afterColon": true, 
+          "mode": "minimum"
+        },
+        "align": {
+          "beforeColon": false, 
+          "afterColon": true, 
+          "mode": "strict",
+          "on": "value"
+        }
+      }
+    ]
+  },
+  "env": {
+    "es6": true,
+    "node": true, 
+    "mocha": true
+  },
+  "ecmaFeatures": {
+    "modules": true,
+    "experimentalObjectRestSpread": true
+  },
+  "extends": [
+    "eslint:recommended", 
+    "airbnb"
+  ], 
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

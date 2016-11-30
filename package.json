@@ -1,0 +1,29 @@
+{
+  "name": "twitter-bot-sandbox",
+  "version": "0.1.0",
+  "description": "This is a testing ground to play around in.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fraziermork/twitter-bot-sandbox.git"
+  },
+  "author": "Frazier Mork <fraziermork@gmail.com> (https://frazier-fibonacci.herokuapp.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fraziermork/twitter-bot-sandbox/issues"
+  },
+  "homepage": "https://github.com/fraziermork/twitter-bot-sandbox#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1",
+    "mocha": "^3.2.0",
+    "twit": "^2.2.5"
+  }
+}
