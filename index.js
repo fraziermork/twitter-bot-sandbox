@@ -12,4 +12,8 @@ mainBot.createUserStream({
   track: ['bananas', 'oranges'],
 });
 
+mainBot.stream.on('tweet', (tweet) => {
+  debug(tweet);
+});
+
 module.exports = mainBot;

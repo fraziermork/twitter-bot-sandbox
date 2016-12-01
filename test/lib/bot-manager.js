@@ -26,7 +26,7 @@ module.exports = (function() {
     debug('addBot');
     if (!bots[botName]) {
       debug('bot saved');
-      bots[botName] = new BotWithTestUtilities(bot);
+      bots[botName] = new BotWithTestUtilities(botName, bot);
     } else {
       debug('bot already managed by bot manager');
     }
@@ -53,8 +53,8 @@ module.exports = (function() {
    */   
   function cleanupAllTweets() {
     debug('cleanupAllTweets');
-    let deleteRequests = bots.map((bot) => {
-      return bot.cleanupAllTweets();
+    let deleteRequests = Object.keys(bots).map((botName) => {
+      return bots[botName].cleanupAllTweets();
     });
     return Promise.all(deleteRequests);
   }

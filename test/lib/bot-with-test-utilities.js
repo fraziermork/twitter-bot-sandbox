@@ -1,18 +1,22 @@
 /* eslint func-names: "off" */
 
 const Promise    = require('bluebird');
-const debug      = require('debug')('tb:bot-decorator');
+const debug      = require('debug')('tb:bot-with-test-utils');
 const TwitterBot = require('../../lib/twitter-bot');
 
+module.exports = BotWithTestUtilities;
 
 /**
  * BotWithTestUtilities - This is a decorator around normal instances of TwitterBot that adds test utilities
  * @constructor  
+ * @param  {string} botName The name of the bot to be given test utilities
  * @param  {TwitterBot} bot The bot to be given test utilities 
  */ 
-function BotWithTestUtilities(bot) {
-  this.bot    = bot;
-  this.tweets = [];
+function BotWithTestUtilities(botName, bot) {
+  debug('BotWithTestUtilities'); 
+  this.botName = botName;
+  this.bot     = bot;
+  this.tweets  = [];
 }
 
 BotWithTestUtilities.prototype.tweet            = tweetAndStoreForCleanup;
@@ -25,19 +29,18 @@ BotWithTestUtilities.prototype.cleanupAllTweets = cleanupAllTweets;
  * tweetAndStoreForCleanup - description
  * @see {@link tweet} 
  * @param  {type} status   description 
- * @param  {type} options  description 
- * @param  {type} callback description 
+ * @param  {type} options  description  
  * @return {type}          description 
  */ 
-function tweetAndStoreForCleanup(status, options, callback) {
-  debug('tweetAndStoreForCleanup');
-  this.bot.tweet(status, options)
+function tweetAndStoreForCleanup(status, options) {
+  debug('tweetAndStoreForCleanup', status);
+  debug('this: ', this);
+  debug('this.bot: ', this.bot);
+  return this.bot.tweet(status, options)
     .then((data) => {
       debug('data: ', data);
       this.tweets.push(data);
-    })
-    .catch((err) => {
-      throw err;
+      return data;
     });
 }
 
@@ -48,9 +51,10 @@ function tweetAndStoreForCleanup(status, options, callback) {
  * @return {Promise}  description 
  */ 
 function cleanupAllTweets() {
-  debug('cleanupAllTweets');
+  debug(`cleanupAllTweets: deleting ${this.tweets.length} tweets.`);
+  debug('this: ', this);
   let deleteRequests = this.tweets.map((tweet) => {
-    return this.bot.twit.deleteTweetById(tweet.id);
+    return this.bot.deleteTweetById(tweet.id_str);
   });
   return Promise.all(deleteRequests)
     .then((data) => {
