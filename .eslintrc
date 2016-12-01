@@ -2,6 +2,21 @@
   "rules": {
     "no-console": 0,
     "no-trailing-spaces": 0,
+    "no-multi-spaces": [
+      2, 
+      { 
+        "exceptions": {
+          "ImportDeclaration": true, 
+          "VariableDeclarator": true
+        }
+      }
+    ],
+    "no-use-before-define": [
+      2, 
+      {
+        "functions": false
+      }
+    ],
     "import/no-extraneous-dependencies": [
       2, 
       {
@@ -14,7 +29,7 @@
       2, 
       {
         "anonymous": "never", 
-        "named": "always"
+        "named": "never"
       }
     ],
     "no-unused-vars": [
