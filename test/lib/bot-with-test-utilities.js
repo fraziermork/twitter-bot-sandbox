@@ -1,7 +1,7 @@
 /* eslint func-names: "off" */
 
 const Promise    = require('bluebird');
-const debug      = require('debug')('tb:tweet-manager');
+const debug      = require('debug')('tb:bot-decorator');
 const TwitterBot = require('../../lib/twitter-bot');
 
 
@@ -15,16 +15,15 @@ function BotWithTestUtilities(bot) {
   this.tweets = [];
 }
 
-BotWithTestUtilities.prototype                  = Object.create(TwitterBot.prototype);
-BotWithTestUtilities.prototype.constructor      = BotWithTestUtilities;
 BotWithTestUtilities.prototype.tweet            = tweetAndStoreForCleanup;
+BotWithTestUtilities.prototype.deleteTweetById  = deleteTweetById;
+BotWithTestUtilities.prototype.createUserStream = createUserStream;
 BotWithTestUtilities.prototype.cleanupAllTweets = cleanupAllTweets;
-
 
 
 /**
  * tweetAndStoreForCleanup - description
- *  
+ * @see {@link tweet} 
  * @param  {type} status   description 
  * @param  {type} options  description 
  * @param  {type} callback description 
@@ -58,4 +57,12 @@ function cleanupAllTweets() {
       this.tweets = [];
       return data;
     });
+}
+
+function deleteTweetById(id) {
+  return this.bot.deleteTweetById(id);
+}
+
+function createUserStream(options) {
+  return this.bot.createUserStream(options);
 }
