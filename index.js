@@ -1,20 +1,16 @@
-const Twit = require('twit');
+/** @module mainBot */
 
-const config = require('./config/bot-config');
+// npm modules 
+const debug       = require('debug')('tb:main-bot');
 
-const t = new Twit(config);
+// internal modules 
+const TwitterBot  = require('./lib/twitter-bot');
+const credentials = require('./config/bot-config');
 
-const userStream = t.stream('user', {
-  track: ['banana', 'orange'],
+const mainBot = new TwitterBot(credentials);
+
+mainBot.createUserStream({
+  track: ['bananas', 'oranges'],
 });
 
-t.get('account/settings', (err, data, res) => {
-  if (err) console.error(err);
-  console.log('-------------------------------------------------------\n', data, '\n-------------------------------------------------------');
-});
-
-userStream.on('tweet', (tweet) => {
-  console.log(tweet);
-});
-
-module.exports = t;
+module.exports = mainBot;

@@ -7,12 +7,15 @@
     "test": "./node_modules/mocha/bin/mocha",
     "document": "./node_modules/.bin/jsdoc ./lib/twitter-bot.js"
   },
+  "engines": {
+    "node": "6.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fraziermork/twitter-bot-sandbox.git"
   },
   "author": "Frazier Mork <fraziermork@gmail.com> (https://frazier-fibonacci.herokuapp.com/)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fraziermork/twitter-bot-sandbox/issues"
   },
