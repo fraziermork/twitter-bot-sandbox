@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
     "document": "./node_modules/.bin/jsdoc ./lib/twitter-bot.js",
-    "start": "DEBUG=tb:* node index.js"
+    "start": "DEBUG=tb:* node index.js", 
+    "tweet": "DEBUG=tb* node test/lib/tweet-at-main-from-test.js"
   },
   "engines": {
     "node": "6.1.0"

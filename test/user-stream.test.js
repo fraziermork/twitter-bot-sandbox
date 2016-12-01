@@ -26,8 +26,12 @@ describe('user streams', function() {
     before('mention mainBot', function() {
       return testBot.tweet(`@${mainBotName} hello ${mainBotName} it is ${(new Date()).toJSON()}`);
     });
-    it('should respond to a mention with "hello world"', function() {
-      expect(true).to.equal(false);
+    it('should respond to a mention with "hello world" and wait for a while', function(done) {
+      this.timeout(12000);
+      setTimeout(function() {
+        expect(true).to.equal(false);
+        done();
+      }, 10000);
     });
   });
 });

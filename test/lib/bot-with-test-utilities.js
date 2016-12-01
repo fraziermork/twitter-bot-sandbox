@@ -52,7 +52,6 @@ function tweetAndStoreForCleanup(status, options) {
  */ 
 function cleanupAllTweets() {
   debug(`cleanupAllTweets: deleting ${this.tweets.length} tweets.`);
-  debug('this: ', this);
   let deleteRequests = this.tweets.map((tweet) => {
     return this.bot.deleteTweetById(tweet.id_str);
   });
