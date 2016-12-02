@@ -4,14 +4,20 @@
   "description": "This is a testing ground to play around in.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha",
+    "document": "./node_modules/.bin/jsdoc ./lib/twitter-bot.js",
+    "start": "DEBUG=tb:* node index.js",
+    "tweet": "DEBUG=tb* node test/lib/tweet-at-main-from-test.js"
+  },
+  "engines": {
+    "node": "6.1.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fraziermork/twitter-bot-sandbox.git"
   },
   "author": "Frazier Mork <fraziermork@gmail.com> (https://frazier-fibonacci.herokuapp.com/)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fraziermork/twitter-bot-sandbox/issues"
   },
@@ -23,7 +29,14 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
-    "mocha": "^3.2.0",
-    "twit": "^2.2.5"
+    "jsdoc": "^3.4.3",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "debug": "^2.3.3",
+    "lodash": "^4.17.2",
+    "twit": "^2.2.5",
+    "uuid": "^3.0.1"
   }
 }
