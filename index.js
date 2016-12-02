@@ -9,14 +9,19 @@ const credentials = require('./config/bot-config');
 const mainBot = new TwitterBot(credentials);
 
 mainBot.createUserStream({
-  track: ['bananas', 'oranges'],
+  // track: ['bananas', 'oranges'],
 });
 
-mainBot.stream.on('message', (message) => {
-  debug('MESSAGE: \n', message);
-});
+// mainBot.stream.on('message', (message) => {
+//   debug('MESSAGE: \n', message);
+// });
 mainBot.stream.on('tweet', (tweet) => {
   debug('TWEET: \n', tweet);
+});
+
+mainBot.configureReplyToMention((tweet) => {
+  debug('hit reply condition');
+  mainBot.tweet(`@${tweet.user.screen_name} ${(new Date()).toJSON()}`);
 });
 
 

@@ -27,10 +27,9 @@ module.exports = (function() {
     if (!bots[botName]) {
       debug('bot saved');
       bots[botName] = new BotWithTestUtilities(botName, bot);
-    } else {
-      debug('bot already managed by bot manager');
-    }
-    return bots[botName];
+      return bots[botName];
+    } 
+    throw new Error(`A bot named ${botName} already existed. Bot names must be unique.`);
   }
   
   

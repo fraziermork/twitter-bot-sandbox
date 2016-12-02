@@ -34,8 +34,6 @@ BotWithTestUtilities.prototype.cleanupAllTweets = cleanupAllTweets;
  */ 
 function tweetAndStoreForCleanup(status, options) {
   debug('tweetAndStoreForCleanup', status);
-  debug('this: ', this);
-  debug('this.bot: ', this.bot);
   return this.bot.tweet(status, options)
     .then((data) => {
       debug('data: ', data);
@@ -69,3 +67,7 @@ function deleteTweetById(id) {
 function createUserStream(options) {
   return this.bot.createUserStream(options);
 }
+
+// function getScreenName() {
+//   
+// }
